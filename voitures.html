@@ -8,8 +8,8 @@
   <title>Gestion du parc · AutoPark</title>
   <link rel="icon" href="data:," />
   <link rel="stylesheet" href="css/style.css" />
-  <script type="module" src="js/voitures.js"></script>
-  <script type="module" src="js\data.js"></script>
+  <script type="module" src="js/rewrite.js"></script>
+  <script type="module" src="js/data.js"></script>
 
 
 
@@ -121,9 +121,9 @@
         <span class="section-note">Tarifs exprimés en dirhams</span>
       </div>
       <!-- TODO JS : combiner recherche, filtres et tri. -->
-      <div class="toolbar">
+      <div class="toolbar" id="formulaire-filtre">
         <div class="field search-field">
-          <label for="recherche">Rechercher une voiture</label>
+          <label for="recherche" >Rechercher une voiture</label>
           <input id="recherche" type="search" placeholder="Marque, modèle, immatriculation…" />
         </div>
         <div class="field">
