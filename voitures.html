@@ -25,8 +25,8 @@
       </a>
       <nav aria-label="Navigation principale">
         <!-- index.html est le dashboard à créer par l'apprenant. -->
-        <a href="/index.html">Dashboard</a>
         <a href="/voitures.html" aria-current="page">Gestion du parc</a>
+        <a href="malocation.html" aria-current="page">Ma location</a>
       </nav>
       <span class="agency-label">Agence de location</span>
     </div>
@@ -123,7 +123,7 @@
       <!-- TODO JS : combiner recherche, filtres et tri. -->
       <div class="toolbar" id="formulaire-filtre">
         <div class="field search-field">
-          <label for="recherche" >Rechercher une voiture</label>
+          <label for="recherche">Rechercher une voiture</label>
           <input id="recherche" type="search" placeholder="Marque, modèle, immatriculation…" />
         </div>
         <div class="field">
@@ -362,26 +362,26 @@
                 </td>
               </tr>
                        -->
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
+      </div>
 
-            <!-- TODO JS : afficher ce message si le parc ou le résultat est vide. -->
-        <div id="etat-vide" class="empty-state" hidden>
-          <h3>Aucune voiture à afficher</h3>
-          <p id="texte-etat-vide">
-            Ajoutez une voiture ou modifiez vos critères de recherche.
-          </p>
-        </div>
-        <div class="table-footer">
-          <span>Atlas Auto · Parc automobile</span
-          ><span>Disponible · Louée · En maintenance</span>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer container">
-      <span>AutoPark</span>
-      <p>Une gestion simple, un parc bien organisé.</p>
-    </footer>
-  </body>
+      <!-- TODO JS : afficher ce message si le parc ou le résultat est vide. -->
+      <div id="etat-vide" class="empty-state" hidden>
+        <h3>Aucune voiture à afficher</h3>
+        <p id="texte-etat-vide">
+          Ajoutez une voiture ou modifiez vos critères de recherche.
+        </p>
+      </div>
+      <div class="table-footer">
+        <span>Atlas Auto · Parc automobile</span><span>Disponible · Louée · En maintenance</span>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer container">
+    <span>AutoPark</span>
+    <p>Une gestion simple, un parc bien organisé.</p>
+  </footer>
+</body>
+
 </html>
