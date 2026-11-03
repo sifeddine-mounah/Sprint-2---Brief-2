@@ -119,3 +119,77 @@ const selectedConfig = {
  * Exemple de contrÃ´le : Sandero, du 10 au 12, siÃ¨ge bÃ©bÃ©, aÃ©roport
  * â†’ 3 Ã— (250 + 30) + 150 = 990 MAD.
  */
+
+const panel = document.querySelector(".panel")
+const parentContainer = document.querySelector(".carteContainer");
+
+config.voitures.forEach(voiture => {
+  
+const carteContainer = document.createElement("div");
+carteContainer.classList.add("carteContainer");
+
+const cartes = document.createElement("article");
+cartes.classList.add("cartes");
+
+const radioButton = document.createElement("input");
+radioButton.style.width="15px";
+radioButton.style.height="15px";
+radioButton.setAttribute("type","radio");
+radioButton.name="checked"
+radioButton.classList.add("radio-input");
+cartes.appendChild(radioButton);
+
+const category = document.createElement("p");
+category.classList.add("category");
+category.textContent = voiture.categorie;
+cartes.appendChild(category);
+
+const carteTitle = document.createElement("h2");
+carteTitle.classList.add("h2");
+carteTitle.textContent = voiture.marque + " " + voiture.modele;
+cartes.appendChild(carteTitle);
+
+const carteStatut = document.createElement("h2");
+carteStatut.classList.add("statut");
+carteStatut.textContent = voiture.statut;
+cartes.appendChild(carteStatut);
+
+const cartePrix = document.createElement("h2");
+cartePrix.classList.add("prix");
+cartePrix.textContent = voiture.prixJour +" "+ "MAD / jour";
+cartes.appendChild(cartePrix);
+
+carteContainer.appendChild(cartes);
+parentContainer.appendChild(carteContainer);
+panel.appendChild(parentContainer);
+
+});
+const separator = document.createElement("hr");
+separator.classList.add("separator");
+panel.appendChild(separator);
+
+
+const secondsection = document.createElement("div");
+secondsection.classList.add("secondSection");
+
+const titreDates = document.createElement("h2");
+titreDates.textContent = "Votre période de location";
+
+secondsection.appendChild(titreDates);
+
+const inputContainer = document.createElement("div");
+inputContainer.classList.add("inputsDate");
+
+const firstLabel = document.createElement("label")
+firstLabel.textContent = "Date de début *";
+
+const brk = document.createElement("br");
+inputContainer.appendChild(firstLabel);
+inputContainer.appendChild(brk);
+
+const debutInput = document.createElement("input")
+debutInput.type = "date"
+inputContainer.appendChild(debutInput);
+
+secondsection.appendChild(inputContainer);
+panel.appendChild(secondsection);
