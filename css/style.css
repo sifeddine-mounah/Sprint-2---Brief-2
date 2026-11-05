@@ -535,8 +535,46 @@ tbody tr:hover {
   transform: translateY(0);
 }
 
-.steps{
+.containerIcons {
+  text-align: center;
+}
+
+.progress-container {
   display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 3px 10px #18283b04;
+}
+
+.progress-container::before {
+  content: "";
+  background-color: var(--line-border-empty);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 0;
+  z-index: 1;
+  transition: 0.4 ease;
+}
+
+.progress {
+  background-color: var(--line-border-fill);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 0;
+  z-index: -1;
+  transition: 0.4 ease;
 }
 
 .dot {
@@ -550,53 +588,46 @@ tbody tr:hover {
   text-align: center;
 }
 
-.nextstepbar::before {
-  color: #697C94;
-}
- .nextstepbar {
-  display: inline-block;
-  color: var(--primary);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  padding-top: 15px;
-  padding-left: 15px;
-}
-
-
-.dot::after {
+.dot.active {
   background-color: var(--primary);
   color: white;
 }
 
-.containerIcons {
-  text-align: center;
-}
-
-.progress-container {
+.steps {
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  max-width: 100%;
-  padding: 26px;
-  margin-bottom: 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: 0 3px 10px #18283b04;
+}
+
+.nextstepbar {
+  display: inline-block;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding-top: 15px;
+  padding-left: 15px;
+  transition: 0.4s ease;
+}
+.nextstepbar::before {
+  color: #697C94;
+}
+.nextstepbar.active {
+  color: var(--primary);
 }
 
 
-.progress {
-  background-color: var(--line-border-fill);
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  height: 2px;
-  width: 0%;
-  z-index: -1;
-  transition: 0.4 ease;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .carteContainer {
   display: grid;
@@ -647,9 +678,15 @@ tbody tr:hover {
 }
 
 .inputsDate {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.inputWidth {
+  width: 50vh;
 }
 
 .dureeRule {
