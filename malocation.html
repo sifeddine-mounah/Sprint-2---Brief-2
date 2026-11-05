@@ -2,44 +2,148 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AutoPark — Interface de gestion du parc automobile Atlas Auto." />
-  <title>Gestion du parc · AutoPark</title>
-  <link rel="icon" href="data:," />
-  <link rel="stylesheet" href="css/style.css" />
-  <script type="module" src="js/rewrite.js"></script>
-  <script type="module" src="js/data.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AutoPark — Interface de gestion du parc automobile Atlas Auto." />
+    <title>Gestion du parc · AutoPark</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="js/malocation.js"></script>
+    <script type="module" src="js/data.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
-  <body>
+
+<body>
     <a class="skip-link" href="#contenu">Aller au contenu</a>
     <header class="site-header">
-      <div class="container header-content">
-        <a
-          class="brand"
-          href="voitures.html"
-          aria-label="AutoPark — Gestion du parc"
-        >
-          <span class="brand-mark" aria-hidden="true">A<span>.</span></span>
-          <span>AutoPark<small>ATLAS AUTO</small></span>
-        </a>
-        <nav aria-label="Navigation principale">
-          <!-- index.html est le dashboard à créer par l'apprenant. -->
-          <a href="index.html">Dashboard</a>
-          <a href="voitures.html" aria-current="page">Ma location</a>
-        </nav>
-        <span class="agency-label">Agence de location</span>
-      </div>
+        <div class="container header-content">
+            <a class="brand" href="voitures.html" aria-label="AutoPark — Gestion du parc">
+                <span class="brand-mark" aria-hidden="true">A<span>.</span></span>
+                <span>AutoPark<small>ATLAS AUTO</small></span>
+            </a>
+            <nav aria-label="Navigation principale">
+                <!-- index.html est le dashboard à créer par l'apprenant. -->
+                <a href="index.html">Dashboard</a>
+                <a href="voitures.html" aria-current="page">Ma location</a>
+            </nav>
+            <span class="agency-label">Agence de location</span>
+        </div>
     </header>
     <main id="contenu" class="container main-content">
-    <section class="page-intro" aria-labelledby="titre-page">
-      <p class="eyebrow">VOTRE LOCATION SUR MESURE</p>
-      <h1 id="titre-page">Composez votre location</h1>
-      <p>Votre voiture, vos dates, vos options. À vous de choisir.</p>
-    </section>
+        <section class="page-intro" aria-labelledby="titre-page">
+            <p class="eyebrow">VOTRE LOCATION SUR MESURE</p>
+            <h1 id="titre-page">Composez votre location</h1>
+            <p>Votre voiture, vos dates, vos options. À vous de choisir.</p>
+        </section>
+        <div class="containerIcons">
+            <div class="progress-container">
+                <div class="progress" id="progress"></div>
+                <div class="steps"><span class="dot currentActive">1</span><p class="nextstepbar active">Véhicule</p></div>
+                <div class="steps"><span class="dot ">2</span><p class="nextstepbar">Récupération</p></div>
+                <div class="steps"><span class="dot ">3</span><p class="nextstepbar">Options</p></div>
+                <div class="steps"><span class="dot ">4</span><p class="nextstepbar">Récapitulatif</p></div>
+            </div>
+        </div>
+        <section class="firstStep" id="firstStep">
+        <div class="bothContainers">
+            <section class="panel" aria-labelledby="titre-formulaire">
+                <div class="page-intro">
+                    <div>
+                        <p class="eyebrow">01 / VÉHICULE</p>
+                        <h2 id="titre-formulaire">Choisissez votre véhicule</h2>
+                    </div>
+                    <p class="section-note">Sélectionnez une voiture disponible et votre période de location.</p>
+                </div>
+                <div class="container">
+                    <div class="carteContainer">
+                        <!-- <article class="cartes">
+                            <input type="radio" name="radio" value="value" style="height:15px ; width:15px;">
+                            <p class="category">Citadine</p>
+                            <h2>Dacia Sandero</h2>
+                            <p class="statut">Disponible</p>
+                            <h3 class="prix">250 MAD / jour</h3>
+                        </article>
+                        <article class="cartes">
+                            <input type="radio" name="radio" value="value" class="radio-input" class style="height:15px ; width:15px;">
+                            <p class="category">Citadine</p>
+                            <h2>Dacia Sandero</h2>
+                            <p class="statut">Disponible</p>
+                            <h3 class="prix">250 MAD / jour</h3>
+                        </article>
+                        <article class="cartes">
+                            <input type="radio" name="radio" value="value" style="height:15px ; width:15px;">
+                            <p class="category">Citadine</p>
+                            <h2>Dacia Sandero</h2>
+                            <p class="statut">Disponible</p>
+                            <h3 class="prix">250 MAD / jour</h3>
+                        </article>
+                    </div> 
+                    <hr class="separator">
+                    <div class="secondSection" style="margin-top: 30px;">
+                        <h2 id="titre-formulaire">Votre période de location</h2>
+                        <div class="inputsDate">
+                            <label for="dateDebut">
+                                Date de début *
+                                <br>
+                                <input type="date" name="dateDebut" id="debutDate" placeholder="10/11/2026">
+                            </label>
 
+                            <label for="dateFin">
+                                Date de fin *
+                                <br>
+                                <input type="date" name="dateFin" id="FinDate" placeholder="12/11/2026">
+                            </label>
+                        </div>
+                        <p class="dureeRule">Durée : 3 jours. Les dates de début et de fin sont incluses.</p>
+                        <div class="buttons">
+                            <button class="btn resetButton">
+                                Recommencer
+                            </button>
+                            <button class="btn nextButton">
+                                Suivant
+                            </button>
+                        </div>
+                    </div>
+                </div>-->
+            </section>
+            <section class="panel" aria-labelledby="titre-formulaire">
+                <!-- <div>
+                    <div class="headingthree">
+                        <p class="eyebrow">VOTRE LOCATION</p>
+                        <h2 id="titre-formulaire">Dacia Sandero</h2>
 
+                        <p class="section-note">Citadine · 250 MAD / jour</p>
+                    </div>
+                </div>
+                <hr class="separator">
+                <div class="horizontalLines">
+                    <h2 id="titre-formulaire">10 → 12 novembre 2026</h2>
+                    <p class="section-note">3 jours · dates incluses</p>
 
+                    <div class="totalTexts">
+                        <p class="section-note">Véhicule · 3 × 250 MAD</p>
+                        <h2 id="titre-formulaire">750 MAD</h2>
+                    </div>
 
-</main>
+                    <div class="recupererTexts">
+                        <p class="section-note">Récupération</p>
+                        <h2 id="titre-formulaire">Gratuite</h2>
+                    </div>
+                    <hr class="separator">
+                    <div class="totalEstime">
+                        <h2 id="titre-formulaire">Total estimé</h2>
+                        <h2 class="total">750 MAD</h2>
+                    </div>
+                    <p class="section-note">Frais de récupération facturés une seule fois.</p>
+                    <p class="secondCarteRule">Une demande, sans paiement en ligne.</p>
+
+                </div> -->
+            </section>
+        </div>
+        </section>
+        
+        <footer>
+            <p class="footertext">AutoPark · Atlas Auto — Demande de location</p>
+        </footer>
+    </main>

@@ -119,3 +119,187 @@ const selectedConfig = {
  * Exemple de contrÃ´le : Sandero, du 10 au 12, siÃ¨ge bÃ©bÃ©, aÃ©roport
  * â†’ 3 Ã— (250 + 30) + 150 = 990 MAD.
  */
+
+
+const progress = document.getElementById("progress");
+const recommencer = document.getElementById("resetId");
+const suivant = document.getElementById("nextId");
+const dots = document.querySelectorAll(".dot");
+const steps = document.querySelectorAll(".nextstepbar");
+
+
+const panel = document.querySelector(".panel")
+const parentContainer = document.querySelector(".carteContainer");
+
+config.voitures.forEach(voiture => {
+
+  const carteContainer = document.createElement("div");
+  carteContainer.classList.add("carteContainer");
+
+  const cartes = document.createElement("article");
+  cartes.classList.add("cartes");
+
+  const radioButton = document.createElement("input");
+  radioButton.style.width = "15px";
+  radioButton.style.height = "15px";
+  radioButton.setAttribute("type", "radio");
+  radioButton.name = "checked"
+  radioButton.classList.add("radio-input");
+  cartes.appendChild(radioButton);
+
+  const category = document.createElement("p");
+  category.classList.add("category");
+  category.textContent = voiture.categorie;
+  cartes.appendChild(category);
+
+  const carteTitle = document.createElement("h2");
+  carteTitle.classList.add("h2");
+  carteTitle.textContent = voiture.marque + " " + voiture.modele;
+  cartes.appendChild(carteTitle);
+
+  const carteStatut = document.createElement("h2");
+  carteStatut.classList.add("statut");
+  carteStatut.textContent = voiture.statut;
+  cartes.appendChild(carteStatut);
+
+  const cartePrix = document.createElement("h2");
+  cartePrix.classList.add("prix");
+  cartePrix.textContent = voiture.prixJour + " " + "MAD / jour";
+  cartes.appendChild(cartePrix);
+
+  carteContainer.appendChild(cartes);
+  parentContainer.appendChild(carteContainer);
+  panel.appendChild(parentContainer);
+
+});
+const separator = document.createElement("hr");
+separator.classList.add("separator");
+panel.appendChild(separator);
+
+
+const secondsection = document.createElement("div");
+secondsection.classList.add("secondSection");
+
+const titreDates = document.createElement("h2");
+titreDates.textContent = "Votre période de location";
+
+secondsection.appendChild(titreDates);
+
+const inputContainer = document.createElement("div");
+inputContainer.classList.add("inputsDate");
+
+const firstLabel = document.createElement("label")
+firstLabel.textContent = "Date de début *";
+
+const brk = document.createElement("br");
+inputContainer.appendChild(firstLabel);
+inputContainer.appendChild(brk);
+
+const debutInput = document.createElement("input")
+debutInput.type = "date"
+debutInput.classList.add("inputWidth")
+inputContainer.appendChild(debutInput);
+firstLabel.appendChild(debutInput);
+
+const secondLabel = document.createElement("label")
+secondLabel.textContent = "Date de fin *";
+
+const brktwo = document.createElement("br");
+inputContainer.appendChild(secondLabel);
+inputContainer.appendChild(brktwo);
+
+const finInput = document.createElement("input")
+finInput.type = "date"
+finInput.classList.add("inputWidth")
+inputContainer.appendChild(finInput);
+secondLabel.appendChild(finInput);
+
+
+secondsection.appendChild(inputContainer);
+
+
+
+
+const dureeRule = document.createElement("p");
+dureeRule.classList.add("dureeRule");
+dureeRule.textContent = ">Durée : 3 jours. Les dates de début et de fin sont incluses.";
+
+secondsection.appendChild(dureeRule)
+
+const buttons = document.createElement("div");
+buttons.classList.add("buttons");
+secondsection.appendChild(buttons);
+
+const resetButton = document.createElement("button");
+resetButton.classList.add("btn", "resetButton");
+resetButton.textContent = "Recommencer";
+resetButton.id = "resetId"
+buttons.appendChild(resetButton);
+
+const nextButton = document.createElement("button");
+nextButton.id = "nextId"
+nextButton.classList.add("btn", "nextButton");
+nextButton.textContent = "Suivant";
+buttons.appendChild(nextButton);
+
+secondsection.appendChild(buttons)
+
+panel.appendChild(secondsection);
+
+
+//============================side card==========================//
+
+// const headingContainer = document.createElement("div");
+// headingContainer.classList.add("headingthree");
+// panel.appendChild(headingContainer);
+// const headTitle = document.createElement("p");
+// headTitle.classList.add("eyebrow");
+// headTitle.textContent = "VOTRE LOCATION";
+// headingContainer.appendChild(headTitle);
+
+// const selectedCar = document.createElement("h2")
+// selectedCar.classList.add("h2")
+
+
+
+
+let currentActive = 0;
+nextButton.addEventListener("click", () => {
+  currentActive++;
+  if (currentActive > dots.length) {
+    currentActive = dots.length
+  }
+  updateSteps()
+  updatedots();
+})
+
+
+resetButton.addEventListener("click", () => {
+  currentActive--;
+  if (currentActive < 1) {
+    currentActive = 1;
+  }
+  updateSteps()
+  updatedots();
+});
+
+function updatedots(){
+  dots.forEach((dot , index) =>{
+    if (index < currentActive) {
+
+      dot.classList.add("active")
+    }else{
+      dot.classList.remove("active");
+    }
+  })
+}
+
+function updateSteps(){
+  steps.forEach((step,idx)=>{
+    if (idx < currentActive) {
+      step.classList.add("active")
+    }else{
+      step.classList.remove("active");
+    }
+  })
+}
